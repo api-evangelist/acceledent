@@ -1,0 +1,386 @@
+generated: '2026-09-06'
+method: probed
+source: https://acceledent.com/
+name: AcceleDent well-known + contract discovery probe
+description: >-
+  Negative probe record for AcceleDent (OrthoAccel Technologies, Inc.). AcceleDent was an
+  FDA-cleared Class II orthodontic vibration device — a physical medical device, not software —
+  and OrthoAccel is reported defunct. The acceledent.com registration in place today was
+  CREATED 2022-08-30, years after the company wound down, and now sits on Afternic name
+  servers as a GoDaddy aftermarket "for sale" listing. That parking system answers HTTP 200
+  with the SAME 114-byte HTML redirect shell on EVERY path, including every /.well-known/*
+  path and every spec path, and it publishes its own robots.txt, sitemap.xml and llms.txt
+  about the domain being for sale. NONE of those 200s is a document authored by AcceleDent.
+  No WellKnown, SecurityTxt, AgentCard, LLMsTxt or OpenAPI pointer is emitted from this
+  probe, and none should ever be emitted from it in a later round.
+
+host_status:
+  host: acceledent.com
+  controlled_by_provider: false
+  disposition: parked-for-sale
+  registrar: GoDaddy.com, LLC
+  domain_created: '2022-08-30'
+  domain_updated: '2026-08-08'
+  domain_expires: '2027-08-30'
+  nameservers:
+  - ns1.afternic.com
+  - ns2.afternic.com
+  a_records:
+  - 76.223.54.146
+  - 13.248.169.48
+  note: >-
+    Creation date (2022-08-30) post-dates OrthoAccel's wind-down, so this registration is not
+    the company's. The root serves
+    <html><head><script>window.onload=function(){window.location.href="/lander"}</script></head></html>
+    and /lander itself returns 403 from an Akamai edge whose body names the target
+    "http://forsale.godaddy.com/forsale/acceledent.com" — i.e. an Afternic/GoDaddy aftermarket
+    sales lander, not a company site.
+  wildcard_dns: true
+  wildcard_dns_note: >-
+    api., developer., developers., docs., app., shop., store., portal. and my..acceledent.com
+    all resolve to the same two parking A records, but no TLS certificate covers them
+    (curl 35, "tlsv1 unrecognized name"), so none is a reachable HTTPS surface. Plain http://
+    on those names returns the same 114-byte parking shell.
+
+soft_200_catch_all: true
+soft_200_note: >-
+  Every probed HTML path returned 200 with content-length 114 and content-type text/html —
+  the identical parking redirect stub. Treat all of them as misses. This is the
+  soft-404 false-credit pattern: a 200 is not evidence.
+
+hosts:
+- host: acceledent.com
+  documents:
+  - path: /.well-known/security.txt
+    status: 200
+    file: null
+    document: false
+    result: miss
+    content_type: text/html
+    bytes: 114
+  - path: /.well-known/openid-configuration
+    status: 200
+    file: null
+    document: false
+    result: miss
+    content_type: text/html
+    bytes: 114
+  - path: /.well-known/oauth-authorization-server
+    status: 200
+    file: null
+    document: false
+    result: miss
+    content_type: text/html
+    bytes: 114
+  - path: /.well-known/api-catalog
+    status: 200
+    file: null
+    document: false
+    result: miss
+    content_type: text/html
+    bytes: 114
+  - path: /.well-known/ai-plugin.json
+    status: 200
+    file: null
+    document: false
+    result: miss
+    content_type: text/html
+    bytes: 114
+  - path: /.well-known/agent-card.json
+    status: 200
+    file: null
+    document: false
+    result: miss
+    content_type: text/html
+    bytes: 114
+    note: >-
+      HTML parking shell, not a JSON AgentCard object. No AgentCard pointer emitted —
+      this is the dominant false positive for the A2A probe.
+  - path: /.well-known/agent.json
+    status: 200
+    file: null
+    document: false
+    result: miss
+    content_type: text/html
+    bytes: 114
+    note: Legacy pre-0.3 path. HTML parking shell, not a JSON AgentCard object.
+- host: www.acceledent.com
+  documents:
+  - path: /.well-known/security.txt
+    status: 200
+    file: null
+    document: false
+    result: miss
+    content_type: text/html
+    bytes: 114
+  - path: /.well-known/openid-configuration
+    status: 200
+    file: null
+    document: false
+    result: miss
+    content_type: text/html
+    bytes: 114
+  - path: /.well-known/oauth-authorization-server
+    status: 200
+    file: null
+    document: false
+    result: miss
+    content_type: text/html
+    bytes: 114
+  - path: /.well-known/api-catalog
+    status: 200
+    file: null
+    document: false
+    result: miss
+    content_type: text/html
+    bytes: 114
+  - path: /.well-known/ai-plugin.json
+    status: 200
+    file: null
+    document: false
+    result: miss
+    content_type: text/html
+    bytes: 114
+  - path: /.well-known/agent-card.json
+    status: 200
+    file: null
+    document: false
+    result: miss
+    content_type: text/html
+    bytes: 114
+  - path: /.well-known/agent.json
+    status: 200
+    file: null
+    document: false
+    result: miss
+    content_type: text/html
+    bytes: 114
+
+contract_discovery:
+  openapi:
+  - url: https://acceledent.com/openapi.json
+    status: 200
+    parses_as_openapi: false
+    result: miss
+  - url: https://acceledent.com/openapi.yaml
+    status: 200
+    parses_as_openapi: false
+    result: miss
+  - url: https://acceledent.com/swagger.json
+    status: 200
+    parses_as_openapi: false
+    result: miss
+  - url: https://acceledent.com/v1/openapi.json
+    status: 200
+    parses_as_openapi: false
+    result: miss
+  - url: https://acceledent.com/api-docs
+    status: 200
+    parses_as_openapi: false
+    result: miss
+  - url: https://acceledent.com/docs
+    status: 200
+    parses_as_openapi: false
+    result: miss
+  - url: https://acceledent.com/redoc
+    status: 200
+    parses_as_openapi: false
+    result: miss
+  - url: https://www.acceledent.com/openapi.json
+    status: 200
+    parses_as_openapi: false
+    result: miss
+  - url: https://www.acceledent.com/swagger.json
+    status: 200
+    parses_as_openapi: false
+    result: miss
+  - url: https://www.acceledent.com/api-docs
+    status: 200
+    parses_as_openapi: false
+    result: miss
+  graphql:
+  - url: https://acceledent.com/graphql
+    status: 200
+    introspection_attempted: false
+    result: miss
+    note: >-
+      Returns the same 114-byte HTML parking shell as every other path, so there is no
+      GraphQL surface to introspect.
+  mcp: []
+  mcp_note: >-
+    No hosted or stdio MCP server exists for AcceleDent. No endpoint was guessed or probed
+    beyond the parked host, because a guessed MCP path that happens to answer 200 on a
+    wildcard parking system would read as a verified agent surface.
+  a2a_agent_card:
+  - url: https://acceledent.com/.well-known/agent-card.json
+    status: 200
+    is_json_object: false
+    result: miss
+  - url: https://acceledent.com/.well-known/agent.json
+    status: 200
+    is_json_object: false
+    result: miss
+  ogc: []
+  ogc_note: >-
+    Not probed. No evidence in any AcceleDent source points at a WMS/WFS/WCS/WMTS/CSW or
+    "OGC API" surface, and blind path patterns are explicitly out of bounds.
+  wsdl: []
+  wsdl_note: >-
+    ?wsdl and ?singleWsdl on the parked host return the same 114-byte shell; there is no
+    SOAP surface and no enterprise/integration docs section to search.
+  api_hosts_resolved:
+  - host: api.acceledent.com
+    dns: wildcard-A (76.223.54.146, 13.248.169.48)
+    https_status: null
+    error: 'curl 35: tlsv1 unrecognized name (no certificate covers this name)'
+    http_status: 200
+    result: miss
+  - host: developer.acceledent.com
+    dns: wildcard-A
+    https_status: null
+    error: 'curl 35: tlsv1 unrecognized name'
+    result: miss
+  - host: developers.acceledent.com
+    dns: wildcard-A
+    https_status: null
+    error: 'curl 35: tlsv1 unrecognized name'
+    result: miss
+  - host: docs.acceledent.com
+    dns: wildcard-A
+    https_status: null
+    error: 'curl 35: tlsv1 unrecognized name'
+    result: miss
+  - host: app.acceledent.com
+    dns: wildcard-A
+    https_status: null
+    error: 'curl 35: tlsv1 unrecognized name'
+    result: miss
+  - host: shop.acceledent.com
+    dns: wildcard-A
+    https_status: null
+    error: 'curl 35: tlsv1 unrecognized name'
+    result: miss
+    note: >-
+      shop.acceledent.com was the company's real e-commerce host for orthodontists,
+      launched circa 2014. It no longer terminates TLS.
+  - host: orthoaccel.com
+    dns: NXDOMAIN (no A record)
+    status: null
+    result: miss
+    note: The parent company's own domain no longer resolves.
+
+llms_txt:
+  url: https://acceledent.com/llms.txt
+  status: 200
+  content_type: text/plain
+  bytes: 580
+  is_real_llms_txt: false
+  authored_by_provider: false
+  verbatim: |
+    # acceledent.com
+
+    > acceledent.com is a domain name currently listed for sale on GoDaddy's aftermarket. It is available via Buy-It-Now, Make-an-Offer, or Lease-to-Own, depending on the listing's current configuration.
+
+    ## Status
+    - For sale: Yes
+    - Listed on: GoDaddy (aftermarket)
+    - Marketplace listing: https://forsale.godaddy.com/forsale/acceledent.com
+    - Escrow / transfer: GoDaddy-backed, typical 5-7 business-day completion
+
+    ## How to buy
+    - Buy It Now, Make an Offer, or Lease-to-Own options are presented on the listing page.
+    - Transactions are protected by GoDaddy escrow.
+  note: >-
+    This IS in llms.txt format, which makes it a tempting false positive — but it was written
+    by the GoDaddy/Afternic domain-parking system ABOUT the domain being for sale, not by
+    AcceleDent about a product. Recorded as a MISS. No LLMsTxt pointer emitted, and no
+    llms/ artifact generated: generating one would assert a documentation surface that
+    does not exist.
+
+robots_txt:
+  url: https://acceledent.com/robots.txt
+  status: 200
+  bytes: 66
+  verbatim: |
+    User-agent: *
+    Allow: /
+    LLM-Policy: /llms.txt
+    Sitemap: /sitemap.xml
+  note: Parking-system boilerplate. Nothing is disallowed, so this run was not robots-blocked.
+
+sitemap:
+  url: https://acceledent.com/sitemap.xml
+  status: 200
+  urls:
+  - https://acceledent.com/lander
+  note: A single parking-lander URL. No content pages, no reference pages.
+
+other_surfaces:
+- what: /lander (the destination the root redirects to)
+  url: https://acceledent.com/lander
+  status: 403
+  result: miss
+  note: >-
+    Akamai "Access Denied" whose body names the blocked target as
+    http://forsale.godaddy.com/forsale/acceledent.com — confirming the domain is an
+    aftermarket sales listing.
+- what: GitHub organization
+  url: https://api.github.com/orgs/acceledent
+  status: 404
+  result: miss
+- what: GitHub organization
+  url: https://api.github.com/orgs/orthoaccel
+  status: 404
+  result: miss
+- what: GitHub repository search "acceledent"
+  url: https://api.github.com/search/repositories?q=acceledent
+  status: 200
+  result: miss
+  note: One unrelated third-party repo (Dhibakar/Ortho). No first-party repositories.
+- what: npm registry search "acceledent"
+  url: https://registry.npmjs.org/-/v1/search?text=acceledent
+  status: 200
+  result: miss
+  note: Zero results. No first-party npm packages.
+- what: PyPI package "acceledent"
+  url: https://pypi.org/pypi/acceledent/json
+  status: 404
+  result: miss
+- what: acceledent.co.uk
+  url: https://acceledent.co.uk/
+  status: 200
+  result: miss
+  note: >-
+    Resolves to a different IP (194.87.245.193) serving a "Domain Intercepted by
+    301Domains" squatter page. Not an AcceleDent surface.
+- what: Internet Archive CDX (attempt to date the last live company site)
+  url: https://web.archive.org/cdx/search/cdx?url=www.acceledent.com&output=json
+  status: 403
+  result: blocked
+  note: >-
+    The Wayback CDX API returned 403 to this client, so the last-live date of the original
+    company site could not be established from the archive. This is a gap in OUR run, not a
+    finding about the provider, and it does not change the conclusion.
+- what: Forge Global secondary-market listing (the harvest source)
+  url: https://forgeglobal.com/acceledent_stock/
+  status: 403
+  result: blocked
+  note: >-
+    Forge returns 403 to non-browser clients including a browser User-Agent and WebFetch.
+    It is a secondary-market share listing, not a company site, so it is recorded as
+    x-harvest-source-url rather than wired as a Website pointer (roadmap#56).
+
+not_probed:
+  domain_security: >-
+    security/acceledent-domain-security.yml was deliberately NOT generated. TLS, HSTS,
+    DNSSEC, CAA, SPF and DMARC on acceledent.com today describe GoDaddy's parking
+    infrastructure, not AcceleDent's. Recording them would credit a defunct medical-device
+    company with a domain posture it never configured.
+
+conclusion: >-
+  AcceleDent has no API surface to enrich and no host its company still controls. OrthoAccel
+  Technologies built a physical Class II medical device; it never operated a developer
+  program, published no OpenAPI/AsyncAPI/GraphQL/MCP/A2A contract, shipped no SDKs, and the
+  domain that carried its brand has since been re-registered and put up for sale. This is a
+  historical record, not a thin profile. Any future round should re-read host_status before
+  probing acceledent.com again.
